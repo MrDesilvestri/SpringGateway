@@ -1,0 +1,17 @@
+server:
+  port: 9000
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: get_records
+            uri: ${SERVER_HOST}:${SERVICE_PORT}/
+            predicates:
+              - Path=${GET_ENDPOINT}
+
+          - id: create_record
+            uri: ${SERVER_HOST}:${SERVICE_PORT}/
+            predicates:
+              - Path=${CREATE_ENDPOINT}
